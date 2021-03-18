@@ -27,8 +27,8 @@ const verifyPackageTree = require('./utils/verifyPackageTree');
 if (process.env.SKIP_PREFLIGHT_CHECK !== 'true') {
   verifyPackageTree();
 }
-// const verifyTypeScriptSetup = require('./utils/verifyTypeScriptSetup');
-// verifyTypeScriptSetup();
+const verifyTypeScriptSetup = require('./utils/verifyTypeScriptSetup');
+verifyTypeScriptSetup();
 // @remove-on-eject-end
 
 const path = require('path');
@@ -56,9 +56,9 @@ const WARN_AFTER_CHUNK_GZIP_SIZE = 1024 * 1024;
 const isInteractive = process.stdout.isTTY;
 
 // Warn and crash if required files are missing
-// if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
-//   process.exit(1);
-// }
+if (!checkRequiredFiles([paths.appHtml, paths.appIndexJs])) {
+  process.exit(1);
+}
 
 const argv = process.argv.slice(2);
 const writeStatsJson = argv.indexOf('--stats') !== -1;
