@@ -18,9 +18,10 @@ jobs:
       - uses: actions/setup-node@v2.1.5
         with: 
           node-version: 14.x
-      - run: npm unpublish @bryht/react-scripts --force
-        with: 
+      - uses: filipstefansson/set-npm-token-action@v1.1
+        with:
           token: ${{ secrets.NPM_TOKEN }}
+      - run: npm unpublish @bryht/react-scripts --force
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
