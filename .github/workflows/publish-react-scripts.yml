@@ -18,9 +18,7 @@ jobs:
       - uses: actions/setup-node@v2.1.5
         with: 
           node-version: 14.x
-      - run: npm unpublish @bryht/react-scripts --force
-        with: 
-          token: ${{ secrets.NPM_TOKEN }}
+      - run: npm --no-git-tag-version version $(npx semver $(npm info @bryht/react-scripts version) -i)
       - uses: JS-DevTools/npm-publish@v1
         with:
           token: ${{ secrets.NPM_TOKEN }}
